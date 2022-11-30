@@ -110,7 +110,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    content: 'ZoCom';
+    content: attr(data-inbox);
     font-size: .5em;
     color: #fff;
 }
