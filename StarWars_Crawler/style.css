@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Share:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
@@ -8,25 +9,37 @@
 body{
     height:100vh; 
     background: #000;
+   
 }
 
 
 .wrapper{
-    width: 100%;
-    height: 100%;
+    width: 768px;
+    height: 480px;
+    margin: 0 auto;
     /* background: #fff; */
     position: relative;
+    font-family: 'Pathway Gothic One', sans-serif;
     overflow: hidden;
+    border: 3px dashed white;
+    transform-style: preserve-3d ;
+    perspective: 7rem;
+    background-color: rgb(0, 0, 0);
+    background-image: url('https://cdn.mos.cms.futurecdn.net/BfemybeKVXCf9pgX9WCxsc-1200-80.jpg.webp');
+    background-size: 50%;
+    background-repeat: repeat;
+    background-blend-mode: hard-light;
+    animation: universe 60s linear forwards , fade_out 3s  linear  65s forwards;
 }
-.StarWors_logo,.start_text{
+.StarWars_logo,.start_text, .scene{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /* display: none; */
 }
 
 .start_text{
-    
     font-size: 1.5rem;
     color: #55f;
     /* display: none; */
@@ -35,11 +48,55 @@ body{
 }
 
 
-.StarWors_logo{
-    
+.StarWars_logo{
     transform: translate(-50%, -50%) scale(0);
     animation: logo_start 10s ease-out normal;
     animation-delay: 11s;
+}
+
+.scene{
+    
+    color:#ea0;
+    transform:rotateX(90deg)  translate(-50%, 150%) scale(1.5);
+    animation: rolling_text 30s  linear  22s forwards, fade_out 3s  linear  47s forwards;
+   
+}
+.scene h1, .scene h2{text-align: center; text-transform: uppercase;}
+.scene h1 {font-size: 3rem ;}
+.scene h2 {font-size: 2rem ;}
+.scene p {
+    font-size: 1.5rem;
+   text-align: justify ;
+}
+
+
+.earth{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    mix-blend-mode: screen;
+    
+}
+.moon{
+    position: absolute;
+    width: 3rem;
+
+    top: 0;
+    left: 20%;
+    mix-blend-mode: screen;
+}
+
+
+.planets{
+    position:absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    mix-blend-mode: screen;
+    transform: translate(0, 100%);
+    animation: Planets_scene 10s linear 50s forwards;
+    
 }
 
 @keyframes start_text {
@@ -55,4 +112,48 @@ body{
     0% { transform: translate(-50%, -50%) scale(3);}
     100% { transform: translate(-50%, -50%) scale(0);}
 
+}
+
+
+@keyframes rolling_text{
+    0% {
+        transform:rotateX(90deg)  translate(-50%, 150%) scale(1.5);
+    }
+    100% {
+        transform:rotateX(90deg)  translate(-50%, -300%) scale(1.5);
+    }
+}
+
+@keyframes fade_out{
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+
+}
+@keyframes universe {
+    0%,100%{ background-position-x: 0%;}
+    50%{background-position-x:  100%; }
+}
+
+
+
+@keyframes Planets_scene {
+    0%{ transform: translate(0, 100%);}
+    100%{transform: translate(0, 20%);}
+}
+
+
+
+@media  only screen and (max-width:500px) {
+    
+    html{
+        font-size: 12px;
+    }
+    .wrapper{
+        width: 100%;
+        max-height:350px;
+    }
 }
