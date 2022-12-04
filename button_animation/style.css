@@ -25,6 +25,7 @@ body{
     z-index: 2;
     overflow: hidden;
     border-radius: .4rem;
+    box-shadow: .5rem .5rem  .5rem #0005;
 }
 
 .btn::before{
