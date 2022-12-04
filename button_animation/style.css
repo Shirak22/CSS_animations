@@ -1,0 +1,77 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    background: #222;
+}
+.btn{
+    --light-color: rgb(69, 252, 151);
+    margin: 1rem;
+    position:relative;
+    appearance: none;
+    border: none;
+    color: rgb(209, 208, 208);
+    padding: 1rem 2rem;
+    background-color: #3e3e3e;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: .4rem;
+}
+
+.btn::before{
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, transparent 0%, transparent 14%, transparent 35%, var(--light-color) 80%, var(--light-color) 100%);
+    content: '';
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center ;
+    transform: translate(-50%, -100%) ;
+    z-index: -3;
+    border-radius: 100%;
+    
+    animation: button_light_effect 5s linear infinite;
+}
+
+.btn::after{
+    position: absolute;
+    width: calc(100% - .3rem);
+    height: calc(100% - .3rem);
+    background-color: #3e3e3e;
+    content: '';
+    top: 50%;
+    left: 50%;
+    border-radius: .4rem;
+    transform: translate(-50%, -50%);
+    z-index: -3;
+    transition:  1s ;
+}
+.btn:hover, .btn:hover::after {
+    cursor: pointer;
+    background: #55606a;
+    
+}
+.btn:hover::before{
+    animation-duration: .5s;
+}
+.btn_orange{--light-color:rgb(255, 166, 0);}
+.btn_blue{--light-color:rgb(0, 183, 255);}
+.btn_yellow{--light-color:rgb(235, 255, 16);}
+.btn_pink{--light-color:rgb(255, 0, 200);}
+
+
+@keyframes button_light_effect {
+    0%{transform: translate(-50%, -100%) rotate(-180deg);}
+    100%{transform: translate(-50%, -100%) rotate(180deg);}
+}
